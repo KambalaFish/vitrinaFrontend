@@ -1,0 +1,23 @@
+{
+  "extends": "@tsconfig/create-react-app/tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "allowUnreachableCode": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": false,
+    "target": "es2022",
+    "sourceMap": true,
+    "baseUrl": "./src/",
+    "noEmit": false,
+    "paths": {
+      "@styles/*": ["styles/*"],
+      "@assets/*": ["assets/*"],
+      "@components/*": ["components/*"],
+      "@pages/*": ["pages/*"],
+      "@interfaces/*": ["interfaces/*"]
+    }
+  },
+  "include": ["./**/*.ts", "./**/*.tsx", "../custom.d.ts", "../environment.d.ts"],
+  "exclude": ["node_modules"]
+}

@@ -1,0 +1,29 @@
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  font-size: calc(0.3125vw + 10px);
+  margin-right: calc(100% - 100vw);
+  overflow-x: hidden;
+  font-family:
+          Montserrat,
+          "Concert One",
+          -apple-system,
+          sans-serif;
+  font-feature-settings: "pnum" on, "lnum" on;
+  transition: all 0.3s ease-in-out;
+}
+
+html,
+body {
+  background-color: rgb(255 255 255);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+button {
+  cursor: pointer;
+}

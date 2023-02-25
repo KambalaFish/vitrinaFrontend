@@ -1,0 +1,17 @@
+@use "sass:math";
+
+@function stripUnit($value) {
+  @if type-of($value) == "number" and not unitless($value) {
+    @return math.div($value, ($value * 0 + 1));
+  }
+
+  @return $value;
+}
+
+@function pxToRem($value) {
+  @if math.unit($value) == "px" {
+    @return #{math.div(stripUnit($value), 16)}rem;
+  }
+
+  @return $value;
+}

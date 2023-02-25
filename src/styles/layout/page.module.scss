@@ -1,0 +1,27 @@
+@use "@styles/abstracts/_variables.scss" as v;
+@use "@styles/abstracts/_functions.scss" as f;
+
+.page {
+  background-color: v.$sWhite;
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  overflow-x: hidden;
+  grid-template: {
+    areas: "header" "content" "footer";
+  };
+
+  &Header {
+    grid-area: header;
+    height: max-content;
+  }
+
+  &Content {
+    grid-area: content;
+  }
+
+  &Footer {
+    grid-area: footer;
+    height: 400px;
+  }
+}

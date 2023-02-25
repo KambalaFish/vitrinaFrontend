@@ -1,0 +1,3 @@
+@use "@styles/abstracts/mixins.scss" as m;
+@include m.googleFont("Roboto");
+@include m.googleFont("Montserrat");
