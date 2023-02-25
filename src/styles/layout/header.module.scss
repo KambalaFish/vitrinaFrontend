@@ -1,0 +1,58 @@
+@use "@styles/abstracts/_functions.scss" as f;
+@use "@styles/abstracts/_variables.scss" as v;
+@use "sass:map";
+
+.header {
+  background-image: radial-gradient(
+                  ellipse 65% 250% at 50% 230%,
+                  #2f3c7e 35%,
+                  #2f3c7e 65%,
+                  #101820ff 90%
+  );
+  // height: f.ptr(220px);
+  height: f.ptr(2 * map.get(v.$header, rowgap)) + map.get(v.$header, infopanel) + map.get(v.$header, search) + map.get(v.$header, shoppingpanel);
+
+  &Container {
+    margin: 0 auto;
+    display: grid;
+    align-items: flex-start;
+    align-content: space-between;
+    grid: {
+      row-gap: f.ptr(map.get(v.$header, rowgap));
+      column-gap: f.ptr(20px);
+      template: {
+        columns: 1fr 1fr 1fr f.ptr(230px);
+        areas: "logo infopanel infopanel infopanel"
+        "_ search search telegrambutton"
+        "shoppingpanel shoppingpanel shoppingpanel shoppingpanel";
+      };
+    };
+  }
+
+  &Logo {
+    grid-area: logo;
+    position: relative;
+    top: 6%;
+  }
+
+  &Infopanel {
+    grid-area: infopanel;
+    height: map.get(v.$header, infopanel);
+  }
+
+  &Search {
+    grid-area: search;
+    height: map.get(v.$header, search);
+  }
+
+  &Telegram {
+    grid-area: telegrambutton;
+    height: map.get(v.$header, infopanel);
+    padding: 0 f.ptr(16px);
+    column-gap: f.ptr(8px);
+  }
+
+  &Shoppingpanel {
+    grid-area: shoppingpanel;
+  }
+}

@@ -1,0 +1,6 @@
+@use "@styles/abstracts/_functions.scss" as f;
+
+.container {
+  max-width: f.ptr(1520px);
+  padding: 0 min(max(10px, 2vw), 24px);
+}

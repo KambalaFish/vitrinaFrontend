@@ -1,0 +1,46 @@
+@use "@styles/abstracts/_mixins.scss" as m;
+@use "@styles/abstracts/_variables.scss" as v;
+@use "@styles/abstracts/_functions.scss" as f;
+
+.logo {
+  @include m.flex(space-between);
+
+  background-image:
+          linear-gradient(
+                          135deg,
+                          rgb(255 200 0) 10%,
+                          rgb(255 180 0) 30%,
+                          rgb(255 160 0) 50%,
+                          rgb(255 140 0) 70%,
+                          rgb(255 120 0) 90%
+          );
+  box-shadow: -0.5rem 0.5rem 0.75rem 0.1rem rgb(255 100 0);
+  color: v.$pBlack;
+  font-weight: bold;
+  column-gap: f.ptr(8px);
+  padding: f.ptr(6px) f.ptr(12px);
+  border-radius: f.ptr(16px);
+  width: max-content;
+  height: max-content;
+
+  &:hover {
+    box-shadow: -0.5rem 0.5rem 0.75rem 0.1rem rgb(255 60 0);
+  }
+
+  &Body {
+    @include m.flexColumn(center, flex-end);
+
+    row-gap: f.ptr(2px);
+    width: min-content;
+  }
+
+  &Text {
+    font-size: f.ptr(23px);
+    line-height: 1;
+  }
+
+  &Emblem {
+    font-size: f.ptr(48px);
+    line-height: 1;
+  }
+}

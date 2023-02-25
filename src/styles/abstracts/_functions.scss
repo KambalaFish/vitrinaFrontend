@@ -8,7 +8,8 @@
   @return $value;
 }
 
-@function pxToRem($value) {
+/* Px To Rem */
+@function ptr($value) {
   @if math.unit($value) == "px" {
     @return #{math.div(stripUnit($value), 16)}rem;
   }

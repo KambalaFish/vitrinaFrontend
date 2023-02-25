@@ -1,0 +1,35 @@
+@use "@styles/abstracts/_variables.scss" as v;
+@use "@styles/abstracts/_mixins.scss" as m;
+
+.searchform {
+  @include m.flex(space-between);
+
+  background-color: v.$pWhite;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  padding: 0 0.25rem 0 2rem;
+
+  &Input {
+    @include m.solidBorder(8px);
+
+    flex-grow: 1;
+    height: 100%;
+    border: 0;
+    outline: 0;
+  }
+
+  &Searchbutton {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: v.$pWhite;
+    color: v.$sBlack7;
+
+    &:hover {
+      color: v.$sBlue4;
+    }
+  }
+
+  &Icon {
+    @include m.rectangle(1.5rem, 1.5rem);
+  }
+}

@@ -8,8 +8,7 @@
     "analyze": "NODE_ENV=analyze webpack",
     "lintJs": "eslint src/**/*.{js,jsx,ts,tsx}",
     "lintStyles": "stylelint --fix src/**/*.{css,scss,sass}",
-    "format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
-    "prepare": "husky install"
+    "format": "prettier --write src/**/*.{js,jsx,ts,tsx}"
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",
@@ -58,6 +57,8 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "@react-icons/all-files": "^4.1.0",
+    "classnames": "^2.3.2",
     "core-js": "^3.28.0",
     "dotenv": "^16.0.3",
     "normalize.css": "^8.0.1",

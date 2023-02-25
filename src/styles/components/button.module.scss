@@ -1,0 +1,94 @@
+@use "@styles/abstracts/_functions.scss" as f;
+@use "@styles/abstracts/_variables.scss" as v;
+@use "@styles/abstracts/_mixins.scss" as m;
+
+.button {
+  display: inline-block;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+
+  &Aerial {
+    background-color: rgba(255 255 255 / 40%);
+    box-shadow: inset 0 0 0.5rem 0.1rem rgb(255 255 255 / 60%);
+
+    &:hover {
+      background-color: rgba(255 255 255 / 60%);
+    }
+  }
+
+  &Rounded {
+    border-radius: 5% / 25%;
+  }
+}
+
+.infobutton {
+  @include m.flex;
+
+  &Icon {
+    @include m.rectangle(f.ptr(36px), f.ptr(36px));
+
+    &Cart {
+      @include m.rectangle(1.5rem, 1.5rem);
+
+      color: v.$sBrown1;
+    }
+  }
+
+  &Body {
+    @include m.flexColumn(space-between, flex-start);
+
+    row-gap: 5px;
+  }
+
+  &Title {
+    font-size: f.ptr(14px);
+    font-weight: bold;
+    color: v.$pWhite;
+    line-height: 1;
+
+    &Cart {
+      color: v.$pBrown;
+    }
+  }
+
+  &Description {
+    font-weight: normal;
+    font-size: f.ptr(11px);
+    color: v.$sWhite1;
+    line-height: 1;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 120%;
+      left: 0;
+      right: 0;
+      height: f.ptr(1px);
+      background-color: v.$sWhite1;
+      transform: scale(0, 1);
+      transform-origin: left;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    &Cart {
+      color: v.$pBrown4;
+      font-weight: bold;
+    }
+  }
+
+  &:hover &Description {
+    &::after {
+      content: "";
+      position: absolute;
+      top: 120%;
+      left: 0;
+      right: 0;
+      height: f.ptr(1px);
+      background-color: v.$sWhite1;
+      transform: scale(1, 1);
+      transition: transform 0.3s ease-in-out;
+    }
+  }
+}
