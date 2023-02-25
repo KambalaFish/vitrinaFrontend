@@ -1,0 +1,43 @@
+@use "@styles/abstracts/_functions.scss" as f;
+@use "@styles/abstracts/_variables.scss" as v;
+@use "@styles/abstracts/_mixins.scss" as m;
+@use "@styles/abstracts/_keyframes.scss" as k;
+
+.shoppingpanel {
+  background-image: linear-gradient(269.91deg, rgb(255 255 255 / 90%) -0.34%, rgb(255 255 255 / 80%) 100%);
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+
+  &Cart {
+    column-gap: 0.5rem;
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: "";
+      left: f.ptr(-16px);
+      top: 0;
+      bottom: 0;
+      width: f.ptr(2px);
+      background-color: v.$sWhite3;
+    }
+
+    &:hover *:nth-child(n+1) {
+      opacity: 0.4;
+    }
+  }
+
+  &Scrolled {
+    @include m.flex(center);
+    @include k.fadeIn;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(90deg, rgb(246 213 247), rgb(251 233 215));
+    border-radius: 0;
+    border-bottom: 0.5px solid v.$sWhite2;
+    animation: fadeIn 0.4s ease-in-out 0s 1 forwards;
+  }
+}

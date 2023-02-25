@@ -15,7 +15,8 @@
       "@assets/*": ["assets/*"],
       "@components/*": ["components/*"],
       "@pages/*": ["pages/*"],
-      "@interfaces/*": ["interfaces/*"]
+      "@interfaces/*": ["interfaces/*"],
+      "@utils/*": ["utils/*"]
     }
   },
   "include": ["./**/*.ts", "./**/*.tsx", "../custom.d.ts", "../environment.d.ts"],

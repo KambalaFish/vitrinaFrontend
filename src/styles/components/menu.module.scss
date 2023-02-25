@@ -1,0 +1,40 @@
+@use "@styles/abstracts/_mixins.scss" as m;
+@use "@styles/abstracts/_functions.scss" as f;
+@use "@styles/abstracts/_variables.scss" as v;
+@use "sass:map";
+
+.menu {
+  @include m.flex(space-around);
+
+  width: 100%;
+  flex-wrap: wrap;
+
+  &Item {
+    @include m.flexColumn(center);
+
+    font-size: f.ptr(14px);
+    width: max-content;
+
+    &Header {
+      height: map.get(v.$header, shoppingpanel);
+      color: v.$pBrown;
+      font-weight: 600;
+      position: relative;
+
+      &:hover {
+        color: v.$sBrown4;
+
+        &::after {
+          position: absolute;
+          top: calc(100% - 0.25rem);
+          left: 0;
+          right: 0;
+          content: "";
+          height: 0.25rem;
+          border-radius: 1rem;
+          background-color: v.$sBlue3;
+        }
+      }
+    }
+  }
+}

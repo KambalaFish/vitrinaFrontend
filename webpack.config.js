@@ -145,6 +145,7 @@ module.exports = {
       '@styles': path.join(__dirname, 'src', 'styles'),
       '@components': path.join(__dirname, 'src', 'components'),
       '@pages': path.join(__dirname, 'src', 'pages'),
+      '@utils': path.join(__dirname, 'src', 'utils'),
     },
   },
   devServer: {

@@ -1,3 +1,5 @@
+@use "functions" as f;
+
 $text: rgb(16 16 16);
 $breakpoints: (
         mobile: 414px,
@@ -42,3 +44,10 @@ $sBrown1: rgb(80 45 58);
 $sBrown2: rgb(70 35 48);
 $sBrown3: rgb(60 25 38);
 $sBrown4: rgb(50 15 28);
+$header: (
+  rowgap: 32px,
+  infopanel: f.ptr(48px),
+  search: f.ptr(56px),
+  shoppingpanel: f.ptr(64px)
+);
+$headerHeight: f.ptr(200px);

@@ -1,0 +1,73 @@
+@use "@styles/abstracts/_mixins.scss" as m;
+@use "@styles/abstracts/_functions.scss" as f;
+@use "@styles/abstracts/_variables.scss" as v;
+
+.infopanel {
+  @include m.flex(flex-end, flex-start);
+
+  $borderColor: rgb(255 255 255 / 15%);
+  $borderWidth: f.ptr(1px);
+
+  &Item {
+    @include m.flexColumn(center);
+
+    border-bottom: $borderWidth solid $borderColor;
+    padding: 0 2rem;
+    height: 100%;
+    position: relative;
+
+    &:last-child::after {
+      position: absolute;
+      content: "";
+      width: 100vw;
+      height: $borderWidth;
+      top: 100%;
+      left: 100%;
+      background-color: $borderColor;
+    }
+
+    &:nth-child(n + 2)::before {
+      position: absolute;
+      content: "";
+      left: 0;
+      top: 15%;
+      bottom: 15%;
+      width: $borderWidth;
+      background-color: $borderColor;
+    }
+
+    &:nth-last-child(n+2):hover {
+      background-color: rgb(230 230 230 / 5%);
+    }
+
+    &BorderLeft {
+      border-left: $borderWidth solid $borderColor;
+      border-bottom-left-radius: f.ptr(14px);
+    }
+
+    &PersonalAccount {
+      padding: 0 1rem;
+      flex-direction: row;
+      column-gap: 0.5rem;
+
+      &:hover > * {
+        opacity: 0.4;
+      }
+    }
+  }
+
+  &Text {
+    font-size: f.ptr(14px);
+    font-weight: bold;
+    color: v.$pWhite;
+
+    &PersonalAccount {
+      font-weight: normal;
+    }
+  }
+
+  &Description {
+    font-size: f.ptr(12px);
+    color: v.$sWhite3;
+  }
+}
