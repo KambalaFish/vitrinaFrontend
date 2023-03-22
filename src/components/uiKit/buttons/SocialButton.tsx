@@ -2,15 +2,15 @@ import cn from 'classnames';
 import {
   button,
   buttonAerial,
-  buttonRounded,
+  buttonRoundedS,
   infobutton,
   infobuttonBody,
   infobuttonTitle,
   infobuttonDescription,
 } from '@styles/components/button.module.scss';
-import { SocialButtonProps } from '@interfaces/props/ButtonProps';
+import { SocialButtonProps } from '@interfaces/props/component/ButtonProps';
 const SocialButton = ({
-  className,
+  customClassName,
   title,
   description,
   isRounded = true,
@@ -23,10 +23,10 @@ const SocialButton = ({
       href={href}
       target={`_blank`}
       className={cn(
-        className,
+        customClassName,
         button,
         { [buttonAerial]: isAerial },
-        { [buttonRounded]: isRounded },
+        { [buttonRoundedS]: isRounded },
         infobutton
       )}
     >

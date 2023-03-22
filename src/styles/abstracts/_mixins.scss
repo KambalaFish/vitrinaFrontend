@@ -41,6 +41,35 @@
   flex-direction: column;
 }
 
-@mixin solidBorder($bw: 1px, $bc: rgb(255 0 0)) {
+@mixin solidBorder($bc: rgb(255 0 0), $bw: 1px) {
   border: $bw solid $bc;
+}
+
+@mixin hide {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s linear, visibility 0.3s;
+}
+
+@mixin show {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s linear, visibility 0.3s;
+}
+
+/* blocks page from repositioning during scrollbar appearance/disappearance */
+@mixin blockReposition {
+  margin-right: calc(100% - 100vw);
+}
+
+@mixin centerHorizontally {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@mixin centerVertically {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }

@@ -49,6 +49,8 @@
       padding: 0 1rem;
       flex-direction: row;
       column-gap: 0.5rem;
+      background-color: transparent;
+      border-bottom: $borderWidth solid $borderColor !important;
 
       &:hover > * {
         opacity: 0.4;
