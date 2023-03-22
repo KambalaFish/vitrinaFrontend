@@ -1,24 +1,24 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { pages } from '@utils/pages';
 import '@styles/global.scss';
-import { page, pageContent } from '@styles/layout/page.module.scss';
-import { Header } from '@components/layout/header';
-import { Footer } from '@components/layout/footer';
+import { Provider } from 'react-redux';
+import { store } from '@redux/store';
+import { Notifications } from '@components/notifications/Notifications';
+import { NotificationContext } from '@utils/notifications/NotificationContext';
+import { useReducer } from 'react';
+import { notificationsReducer } from '@utils/notifications/notifications.reducer';
+import { AllRoutes } from '@components/routing/AllRoutes';
 
 const App = () => {
-  const pageRoutes = Object.values(pages).map(({ path, component: Component }) => {
-    return <Route key={path} path={path} element={<Component />} />;
-  });
+  const [notifications, notificationsDispatch] = useReducer(notificationsReducer, []);
+
   return (
-    <BrowserRouter>
-      <div className={page}>
-        <Header />
-        <main className={pageContent}>
-          <Routes>{pageRoutes}</Routes>
-        </main>
-        <Footer />
-      </div>
-    </BrowserRouter>
+    <>
+      <Provider store={store}>
+        <NotificationContext.Provider value={notificationsDispatch}>
+          <Notifications notifications={notifications} />
+          <AllRoutes />
+        </NotificationContext.Provider>
+      </Provider>
+    </>
   );
 };
 
