@@ -1,0 +1,17 @@
+@use "@styles/abstracts/_functions.scss" as f;
+@use "@styles/abstracts/_mixins.scss" as m;
+
+.notifications {
+  @include m.blockReposition;
+
+  z-index: 1500;
+  position: fixed;
+  bottom: f.ptr(40px);
+  right: f.ptr(40px);
+  width: max-content;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+  align-items: flex-end;
+  row-gap: f.ptr(20px);
+}

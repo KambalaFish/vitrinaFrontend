@@ -1,0 +1,156 @@
+@use '@styles/abstracts/_functions.scss' as f;
+@use '@styles/abstracts/_mixins.scss' as m;
+@use "@styles/abstracts/_variables.scss" as v;
+@use "@styles/abstracts/_keyframes.scss" as k;
+
+.notification {
+  @include m.flexColumn(flex-start, flex-start);
+
+  row-gap: f.ptr(8px);
+  position: relative;
+  width: f.ptr(400px);
+  padding: f.ptr(10px) f.ptr(10px) f.ptr(10px) f.ptr(32px);
+  border-radius: f.ptr(8px);
+  box-shadow: inset 0 0 f.ptr(8px) rgb(8 8 8), f.ptr(-4px) f.ptr(8px) f.ptr(16px) rgb(64 64 64);
+  word-break: break-word;
+  text-align: start;
+  white-space: pre-line;
+  transition: transform 0.3s ease-out;
+
+  &:hover {
+    transform: scale(1.025);
+    transition: transform 0.3s ease-in;
+  }
+
+  &Open {
+    @include k.fadeInRight;
+
+    animation: 0.45s fadeInRight linear normal forwards;
+    pointer-events: none;
+  }
+
+  &Close {
+    @include k.fadeOutRight;
+
+    animation: 0.45s fadeOutRight linear normal forwards;
+  }
+
+  &Error {
+    background-color: rgb(211 47 47);
+  }
+
+  &Success {
+    background-color: rgb(56 142 60);
+  }
+
+  &Info {
+    background-color: rgb(2 136 209)
+  }
+
+  &Warning {
+    background-color: rgb(245 124 0);
+  }
+
+  &Header {
+    width: 100%;
+    position: relative;
+  }
+
+  &Button {
+    background-color: transparent;
+    z-index: 10;
+    position: absolute;
+    top: f.ptr(4px);
+    right: f.ptr(6px);
+    padding: f.ptr(7px);
+
+    &::before, &::after {
+      $lineWidth: f.ptr(14px);
+      $lineHeight: 1.5px;
+
+      content: '';
+      display: block;
+      position: absolute;
+      width: $lineWidth;
+      height: $lineHeight;
+      top: 50%;
+      left: 50%;
+      background-color: v.$sBlack2;
+    }
+
+    &::before {
+      transform: translate(-50%, -50%) rotate(-45deg);
+      transition: transform 0.3s linear;
+    }
+
+    &::after {
+      transform: translate(-50%, -50%) rotate(45deg);
+      transition: transform 0.3s linear;
+    }
+
+    &:hover::before {
+      transform: translate(-50%, -50%) rotate(-135deg);
+      transition: transform 0.3s linear;
+    }
+
+    &:hover::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+      transition: transform 0.3s linear;
+    }
+
+    &Error::before, &Error::after {
+      background-color: v.$sWhite4;
+    }
+  }
+
+  &Type {
+    margin: 0;
+    font-weight: 700;
+    font-size: f.ptr(16px);
+    line-height: 1;
+    color: v.$pBlack;
+
+    &::selection {
+      background: v.$sWhite3;
+    }
+
+    &Error {
+      color: v.$pWhite;
+
+      &::selection {
+        background: v.$sBlack2;
+      }
+    }
+  }
+
+  &Icon {
+    position: absolute;
+    top: f.ptr(-3px);
+    left: f.ptr(-24px);
+    width: f.ptr(20px);
+    height: f.ptr(20px);
+
+    &Error {
+      color: v.$pWhite;
+    }
+  }
+
+  &Message {
+    margin: 0;
+    color: v.$sBlack1;
+    font-weight: 600;
+    font-size: f.ptr(14px);
+
+    &::selection {
+      background: v.$sWhite3;
+    }
+
+    &Error{
+      color: v.$pWhite;
+
+      &::selection {
+        background: v.$sBlack2;
+      }
+    }
+  }
+}
