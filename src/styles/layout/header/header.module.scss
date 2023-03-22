@@ -47,7 +47,7 @@
 
   &Telegram {
     grid-area: telegrambutton;
-    height: map.get(v.$header, infopanel);
+    height: map.get(v.$header, search);
     padding: 0 f.ptr(16px);
     column-gap: f.ptr(8px);
   }
