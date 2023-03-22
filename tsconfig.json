@@ -16,7 +16,12 @@
       "@components/*": ["components/*"],
       "@pages/*": ["pages/*"],
       "@interfaces/*": ["interfaces/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@services/*": ["services/*"],
+      "@localStorage/*": ["localStorage/*"],
+      "@redux/*": ["redux/*"],
+      "@hooks/*": ["hooks/*"],
+      "@validations/*": ["validations/*"],
     }
   },
   "include": ["./**/*.ts", "./**/*.tsx", "../custom.d.ts", "../environment.d.ts"],

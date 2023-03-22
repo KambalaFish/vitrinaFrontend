@@ -1,0 +1,94 @@
+@use "@styles/abstracts/_mixins.scss" as m;
+@use "@styles/abstracts/_functions.scss" as f;
+@use "@styles/abstracts/_variables.scss" as v;
+@use "@styles/abstracts/_keyframes.scss" as k;
+
+.breadcrumbs {
+  @include m.flex;
+
+  animation: fadeIn 0.3s linear forwards;
+  position: relative;
+  column-gap: f.ptr(22px);
+  height: f.ptr(48px);
+  margin: 0;
+  padding: 0 0 0 f.ptr(8px);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: v.$sWhite2;
+  }
+
+  &Shown {
+    @include k.fadeIn;
+
+    animation: 0.3s fadeIn linear normal forwards;
+  }
+
+  &Hidden {
+    display: none;
+  }
+}
+
+.crumb {
+  display: inline-block;
+  width: max-content;
+  position: relative;
+  font-size: f.ptr(14px);
+  line-height: 1;
+  
+  &Home {
+    @include m.rectangle(f.ptr(14px), f.ptr(14px));
+
+    &::after {
+      display: none;
+    }
+  }
+
+  &Title {
+    line-height: 1;
+    font-size: f.ptr(13px);
+    font-weight: 600;
+    color: v.$sBlack7;
+    transition: color 0.3s linear;
+
+    &:hover {
+      color: v.$sBlack2;
+      transition: color 0.3s linear;
+    }
+  }
+
+  &Last {
+    cursor: default;
+
+    &:hover {
+      color: v.$sBlack7;
+    }
+  }
+
+  &::after{
+    position: absolute;
+    z-index: 0;
+    content: '';
+    top: 50%;
+    transform: translateY(-50%);
+    left: f.ptr(-12px);
+    height: f.ptr(14px);
+    width: f.ptr(2px);
+    background-color: v.$sWhite2;
+  }
+
+  &Icon {
+    color: v.$sBlack7;
+    transition: color 0.3s ease-out;
+
+    &:hover {
+      color: v.$sBlack2;
+      transition: color 0.4s ease-in;
+    }
+  }
+}
