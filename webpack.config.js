@@ -7,6 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const DotenvPlugin = require('dotenv-webpack');
 
 const isDev = process.env.NODE_ENV === 'development';
 const isAnalyze = process.env.NODE_ENV === 'analyze';
@@ -33,6 +34,9 @@ const getPlugins = () => {
       context: path.join(__dirname, 'src'),
       extensions: ['css', 'scss', 'sass'],
       fix: true,
+    }),
+    new DotenvPlugin({
+      path: './.env',
     }),
   ];
   if (isProd) {
@@ -133,9 +137,10 @@ module.exports = {
   output: {
     filename: filename('js'),
     chunkFilename: chunkFilename('js'),
-    path: path.join(__dirname, 'dist'),
+    path: isProd ? '/var/www/shop' : path.join(__dirname, 'dist'),
     clean: true,
     assetModuleFilename: '[name][ext]',
+    publicPath: '/',
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
@@ -145,7 +150,13 @@ module.exports = {
       '@styles': path.join(__dirname, 'src', 'styles'),
       '@components': path.join(__dirname, 'src', 'components'),
       '@pages': path.join(__dirname, 'src', 'pages'),
+      '@interfaces': path.join(__dirname, 'src', 'interfaces'),
       '@utils': path.join(__dirname, 'src', 'utils'),
+      '@services': path.join(__dirname, 'src', 'services'),
+      '@localStorage': path.join(__dirname, 'src', 'localStorage'),
+      '@redux': path.join(__dirname, 'src', 'redux'),
+      '@hooks': path.join(__dirname, 'src', 'hooks'),
+      '@validations': path.join(__dirname, 'src', 'validations'),
     },
   },
   devServer: {

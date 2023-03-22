@@ -1,28 +1,40 @@
 @use "@styles/abstracts/_variables.scss" as v;
 @use "@styles/abstracts/_functions.scss" as f;
+@use "@styles/abstracts/_mixins.scss" as m;
 
 .page {
+  @include m.flexColumn;
+
   background-color: v.$sWhite;
   width: 100%;
   min-height: 100vh;
-  display: grid;
   overflow-x: hidden;
-  grid-template: {
-    areas: "header" "content" "footer";
-  };
 
   &Header {
-    grid-area: header;
     height: max-content;
+    width: 100%;
+  }
+
+  &Breadcrumbs {
+    margin: 0 auto;
+    width: 100%;
   }
 
   &Content {
-    grid-area: content;
     height: 120vh;
+    width: 100%;
+    margin: 0 auto;
   }
 
   &Footer {
-    grid-area: footer;
     height: 400px;
+  }
+
+  &Title {
+    font-size: clamp(18px, 1.875vw, 36px);
+    font-weight: 600;
+    line-height: 1;
+    color: v.$sBlack1;
+    padding: clamp(10px, 1.0416vw, 20px);
   }
 }

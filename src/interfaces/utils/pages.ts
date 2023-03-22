@@ -1,10 +1,31 @@
-import type { FC } from 'react';
+import { ReactElement } from 'react';
 
-type PageNames = 'home' | 'orders' | 'personalAccount' | 'contacts' | 'catalog' | 'cart';
+type PageNames =
+  | 'home'
+  | 'orders'
+  | 'personalAccount'
+  | 'contacts'
+  | 'catalog'
+  | 'category'
+  | 'cart'
+  | 'signIn'
+  | 'signUp'
+  /*todo: remove below*/
+  | 'test'
+  | 'testId'
+  | 'testtest';
+
+interface PageHandle {
+  crumb: (
+    position: string,
+    isLast: boolean,
+    params?: Record<string, string>
+  ) => ReactElement;
+}
 
 interface PageInfo {
   path: string;
-  component: FC;
+  handle?: PageHandle;
 }
 
 type Pages = {
