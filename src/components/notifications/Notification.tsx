@@ -16,7 +16,7 @@ import cn from 'classnames';
 import { button } from '@styles/components/button.module.scss';
 import { INotificationContext } from '@interfaces/contexts/NotificationContext';
 import { removeNotification } from '@utils/notifications/notification.actions';
-import { NotificationHeader } from '@components/notifications/NotificationsHeader';
+import { NotificationHeader } from '@components/notifications/NotificationHeader';
 import { useContext, useEffect, useState } from 'react';
 import { NotificationContext } from '@utils/notifications/NotificationContext';
 import { NotificationProps } from '@interfaces/props/component/NotificationProps';

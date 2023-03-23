@@ -1,13 +1,5 @@
 import { StatefulLink } from '@components/routing/StatefulLink';
-import { IoHome as HomeIcon } from '@react-icons/all-files/io5/IoHome';
-import { pages } from '@utils/pages';
-import {
-  crumb,
-  crumbIcon,
-  crumbHome,
-  crumbTitle,
-  crumbLast,
-} from '@styles/components/breadcrumbs.module.scss';
+import { crumb, crumbTitle, crumbLast } from '@styles/components/breadcrumbs.module.scss';
 import cn from 'classnames';
 import { CrumbProps } from '@interfaces/props/component/CrumbProps';
 
@@ -37,22 +29,4 @@ const Crumb = ({ url, title, position, isLast }: CrumbProps) => {
   );
 };
 
-const HomeCrumb = () => {
-  return (
-    <li
-      className={cn(crumb, crumbHome)}
-      itemProp={'itemListElement'}
-      itemScope
-      itemType='https://schema.org/ListItem'
-    >
-      <StatefulLink to={pages.home.path}>
-        <HomeIcon className={crumbIcon} />
-      </StatefulLink>
-      <meta itemProp={'name'} content={'Главная'} />
-      <meta itemProp={'item'} content={pages.home.path} />
-      <meta itemProp={'position'} content={'1'} />
-    </li>
-  );
-};
-
-export { Crumb, HomeCrumb };
+export { Crumb };
