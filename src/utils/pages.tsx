@@ -84,49 +84,6 @@ const pages: Pages = {
   signUp: {
     path: '/sign-up',
   },
-  /*todo: remove below*/
-  test: {
-    path: '/test',
-    handle: {
-      crumb: (position: string, isLast: boolean) => (
-        <Crumb
-          key={'/test'}
-          url={'/test'}
-          title={'Тест'}
-          position={position}
-          isLast={isLast}
-        />
-      ),
-    },
-  },
-  testId: {
-    path: '/test/:testId',
-    handle: {
-      crumb: (position: string, isLast: boolean, params) => (
-        <Crumb
-          key={'/test/:testId'}
-          url={'/test/:testId'}
-          title={params ? params['testId'] : ''}
-          position={position}
-          isLast={isLast}
-        />
-      ),
-    },
-  },
-  testtest: {
-    path: '/test/:testId/testtest',
-    handle: {
-      crumb: (position: string, isLast: boolean) => (
-        <Crumb
-          key={'/test/:testId/testtest'}
-          url={'/test/:testId/testtest'}
-          title={'ТестТест'}
-          position={position}
-          isLast={isLast}
-        />
-      ),
-    },
-  },
 };
 
 export { pages };

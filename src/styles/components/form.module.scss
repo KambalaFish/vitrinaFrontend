@@ -1,0 +1,113 @@
+@use "@styles/abstracts/_variables.scss" as v;
+@use "@styles/abstracts/_mixins.scss" as m;
+@use "@styles/abstracts/_functions.scss" as f;
+@use "@styles/abstracts/_keyframes.scss" as k;
+
+
+.form {
+  @include m.solidBorder(rgba(0,0,0,0.05), 1px);
+
+  box-shadow: 0 f.ptr(4px) f.ptr(20px) rgb(0 0 0 / 5%);
+  border-radius: f.ptr(20px);
+  padding: min(max(20px, 2vw), 24px) min(max(20px, 2vw), 30px) min(max(20px, 2vw), 30px);
+  color: v.$sBlack2;
+
+  &Group {
+    margin-top: f.ptr(18px);
+  }
+
+  &Label {
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  $errorColor: rgb(254 16 64);
+
+  &Input {
+    @include m.solidBorder(rgb(233, 232, 232), f.ptr(1px));
+
+    cursor: pointer;
+    box-shadow: inset f.ptr(2px) f.ptr(2px) f.ptr(2px) rgb(0 0 0 / 20%);
+    border-radius: f.ptr(10px);
+    padding: 0 f.ptr(20px);
+    outline: 0;
+
+    &::placeholder {
+      color: v.$sWhite2;
+    }
+
+    &:focus {
+      box-shadow: inset f.ptr(2px) f.ptr(2px) f.ptr(2px) rgb(0 0 0 / 40%);
+    }
+
+    &Invalid {
+      @include m.solidBorder($errorColor, f.ptr(2px));
+
+      box-shadow: none;
+
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &Validationinfo {
+    cursor: pointer;
+    color: $errorColor;
+  }
+
+  &Error {
+    @include k.fadeIn;
+
+    cursor: auto;
+    position: relative;
+    background-image: linear-gradient(90deg, rgb(144 4 4) 0%, rgb(255 4 4) 100%);
+    color: v.$pWhite;
+    font-weight: 700;
+    padding: f.ptr(8px) f.ptr(8px) f.ptr(8px) f.ptr(12px);
+    border-top-right-radius: f.ptr(8px);
+    border-bottom-right-radius: f.ptr(8px);
+    animation: 0.45s fadeIn linear normal forwards;
+
+    &::before{
+      content: '';
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: f.ptr(6px);
+      background-color: v.$sBlack2;
+    }
+  }
+
+  &Auth {
+    box-shadow: none;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+  }
+
+  &Closed {
+    display: none;
+  }
+}
+
+.inputgroup {
+  width: 100%;
+  position: relative;
+
+  &Input {
+    padding: 0 f.ptr(32px) 0 f.ptr(20px);
+  }
+
+  &Icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: f.ptr(10px);
+    cursor: pointer;
+    width: f.ptr(16px);
+    height: f.ptr(16px);
+  }
+}

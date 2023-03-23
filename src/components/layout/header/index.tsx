@@ -6,13 +6,13 @@ import {
   headerLogo,
   headerSearch,
   headerTelegram,
-} from '@styles/layout/header.module.scss';
+} from '@styles/layout/header/header.module.scss';
 import { container } from '@styles/layout/container.module.scss';
 import { Logo } from '@components/layout/header/Logo';
 import { InfoPanel } from '@components/layout/header/InfoPanel';
 import { SearchForm } from '@components/layout/header/SearchForm';
 import { pages } from '@utils/pages';
-import { SocialButton } from '@components/buttons/SocialButton';
+import { SocialButton } from '@components/uiKit/buttons/SocialButton';
 import TelegramIcon from '@assets/tgicon.svg';
 import { infobuttonIcon } from '@styles/components/button.module.scss';
 import { ShoppingPanel } from '@components/layout/header/ShoppingPanel';
@@ -43,11 +43,11 @@ const Header = () => {
   return (
     <header className={cn(pageHeader, header)} ref={headerRef}>
       <div className={cn(container, headerContainer)}>
-        <Logo className={headerLogo} />
+        <Logo customClassName={headerLogo} />
         <InfoPanel />
-        <SearchForm action={pages.catalog.path} className={headerSearch} />
+        <SearchForm action={pages.catalog.path} customClassName={headerSearch} />
         <SocialButton
-          className={headerTelegram}
+          customClassName={headerTelegram}
           title={'Наш телеграм'}
           description={`@dmitrykambalin`}
           href={`https://telegram.me/dmitrykambalin`}

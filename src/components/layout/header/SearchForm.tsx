@@ -4,19 +4,19 @@ import {
   searchformInput,
   searchformSearchbutton,
   searchformIcon,
-} from '@styles/components/searchform.module.scss';
+} from '@styles/layout/header/searchform.module.scss';
 import { button } from '@styles/components/button.module.scss';
 import { BsSearch as SearchIcon } from '@react-icons/all-files/bs/BsSearch';
-import { ClassNameProp } from '@interfaces/props/ClassNameProp';
+import { CustomClassNameProp } from '@interfaces/props/common/CustomClassNameProp';
 
-interface SearchFormProps extends ClassNameProp {
+interface SearchFormProps extends CustomClassNameProp {
   action?: string;
   placeholder?: string;
 }
 
 const SearchForm = ({
   action,
-  className,
+  customClassName,
   placeholder = 'я подыскиваю...',
 }: SearchFormProps) => {
   return (
@@ -26,7 +26,7 @@ const SearchForm = ({
       method={`get`}
       target={`_self`}
       autoComplete={'off'}
-      className={cn(className, searchform)}
+      className={cn(customClassName, searchform)}
     >
       <input
         type='text'

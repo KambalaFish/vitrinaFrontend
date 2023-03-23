@@ -1,0 +1,86 @@
+@use "@styles/abstracts/_functions.scss" as f;
+@use "@styles/abstracts/_variables.scss" as v;
+@use "@styles/abstracts/_mixins.scss" as m;
+
+.auth {
+  width: f.ptr(352px);
+  padding: f.ptr(16px) f.ptr(20px);
+  background-image: linear-gradient(v.$sWhite1 0%, v.$pWhite 100%);
+  transform-origin: top left;
+
+  &Title {
+    font-size: min(max(16px, 2vw), 24px);
+    font-weight: 600;
+    line-height: 1.4;
+    color: v.$pBlack;
+    position: relative;
+    margin: 0 0 f.ptr(24px) 0;
+
+    &::after {
+      display: block;
+      position: absolute;
+      bottom: f.ptr(-8px);
+      content: '';
+      width: 100%;
+      height: f.ptr(1px);
+      background-color: v.$sWhite2;
+    }
+  }
+
+  &Button {
+    width: 100%;
+    height: f.ptr(56px);
+    line-height: f.ptr(48px);
+    font-size: f.ptr(20px);
+    margin-top: f.ptr(32px);
+  }
+
+  &Label {
+    display: block;
+    margin-bottom: f.ptr(8px);
+    font-size: f.ptr(14px);
+    line-height: 1;
+  }
+
+  &Input {
+    font-size: f.ptr(16px);
+    height: f.ptr(48px);
+    width: 100%;
+  }
+
+  &Validationinfo {
+    display: block;
+    margin-top: f.ptr(4px);
+    line-height: 1;
+    font-size: f.ptr(12px);
+  }
+
+  &Error {
+    display: block;
+    margin: f.ptr(18px) 0;
+    font-size: f.ptr(14px);
+  }
+
+  &Text {
+    font-size: f.ptr(16px);
+    color: v.$sBlack3;
+
+    &Small {
+      font-size: f.ptr(13px);
+      color: v.$sBlack4;
+    }
+
+    &Highlighted {
+      color: v.$sBlue6;
+      font-weight: 600;
+      text-decoration: underline dashed;
+      text-underline-offset: f.ptr(2px);
+      cursor: pointer;
+      transition: color 0.3s linear;
+
+      &:hover {
+        color: v.$sBlue3;
+      }
+    }
+  }
+}

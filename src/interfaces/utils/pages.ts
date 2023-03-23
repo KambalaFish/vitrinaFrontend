@@ -9,11 +9,7 @@ type PageNames =
   | 'category'
   | 'cart'
   | 'signIn'
-  | 'signUp'
-  /*todo: remove below*/
-  | 'test'
-  | 'testId'
-  | 'testtest';
+  | 'signUp';
 
 interface PageHandle {
   crumb: (
