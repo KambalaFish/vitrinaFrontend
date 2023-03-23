@@ -1,0 +1,34 @@
+@use '@styles/abstracts/_mixins.scss' as m;
+@use '@styles/abstracts/_functions.scss' as f;
+
+.account {
+  display: block;
+
+  &Header {
+    @include m.flex(space-between);
+  }
+
+  &Title {
+    margin: 0;
+  }
+}
+
+.signoutbutton {
+  @include m.flex;
+
+  column-gap: f.ptr(10px);
+  color: rgb(230 77 33);
+  padding: f.ptr(16px) f.ptr(32px);
+  border-radius: f.ptr(12px) / f.ptr(10px);
+
+  &Icon {
+    @include m.rectangle(f.ptr(20px), f.ptr(20px));
+  }
+
+  &Text {
+    font-size: f.ptr(16px);
+    line-height: 1;
+    font-weight: 600;
+    letter-spacing: 1.25px;
+  }
+}

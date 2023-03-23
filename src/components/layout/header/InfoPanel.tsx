@@ -1,8 +1,8 @@
 import cn from 'classnames';
-import { Link } from 'react-router-dom';
+import { StatefulLink } from '@components/routing/StatefulLink';
 import { pages } from '@utils/pages';
 import { IoPersonCircle as PersonIcon } from '@react-icons/all-files/io5/IoPersonCircle';
-import { headerInfopanel } from '@styles/layout/header.module.scss';
+import { headerInfopanel } from '@styles/layout/header/header.module.scss';
 import {
   infopanel,
   infopanelItem,
@@ -11,7 +11,7 @@ import {
   infopanelTextPersonalAccount,
   infopanelDescription,
   infopanelItemPersonalAccount,
-} from '@styles/components/infopanel.module.scss';
+} from '@styles/layout/header/infopanel.module.scss';
 
 const InfoPanel = () => {
   const contactNumber = `8 800 555-35-35`;
@@ -21,11 +21,11 @@ const InfoPanel = () => {
       <a href={`tel:${tel}`} className={cn(infopanelItem, infopanelItemBorderLeft)}>
         <span className={infopanelText}>{contactNumber}</span>
       </a>
-      <Link to={pages.contacts.path} className={infopanelItem}>
-        <address className={infopanelText}>Ул. Пушкина, д. Колотушкина</address>
+      <StatefulLink to={pages.contacts.path} className={infopanelItem}>
+        <address className={infopanelText}>ул. Пушкина, д. Колотушкина</address>
         <span className={infopanelDescription}>Витрина Дмитрия Камбалина</span>
-      </Link>
-      <Link
+      </StatefulLink>
+      <StatefulLink
         to={pages.personalAccount.path}
         className={cn(infopanelItem, infopanelItemPersonalAccount)}
       >
@@ -33,7 +33,7 @@ const InfoPanel = () => {
         <span className={cn(infopanelText, infopanelTextPersonalAccount)}>
           Личный кабинет
         </span>
-      </Link>
+      </StatefulLink>
     </div>
   );
 };

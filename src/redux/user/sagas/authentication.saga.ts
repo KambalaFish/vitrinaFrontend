@@ -1,4 +1,4 @@
-import { take, call, fork, cancel, put } from '@redux-saga/core/effects';
+import { take, call, fork, cancel, join, select } from '@redux-saga/core/effects';
 import { Task } from 'redux-saga';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { userLocalStorage } from '@localStorage/user.localStorage';
@@ -10,25 +10,51 @@ import {
   SIGNOUT_REQUEST_TYPE,
   userSliceActions,
 } from '@redux/user/user.actions';
-import { authService } from '@services/auth.service';
+import { resetToInitialStateWorker } from '@redux/user/sagas/resetToInitialStateWorker.saga';
+import { signOutWorker } from '@redux/user/sagas/signOutWorker';
+import { selectIsUserAuthenticated } from '@redux/user/user.selectors';
 
-export function* authenticationFlow() {
+export function* authenticationFlowSaga() {
   while (true) {
-    const { payload }: PayloadAction<AuthCredentials> = yield take(SIGNIN_REQUEST_TYPE);
-    const signInTask: Task = yield fork(signInWorker, payload);
+    const isUserAuthenticated: boolean = yield select(selectIsUserAuthenticated);
+    if (!isUserAuthenticated) {
+      const { payload }: PayloadAction<AuthCredentials> = yield take(SIGNIN_REQUEST_TYPE);
+      yield fork(signInWorker, payload);
+    }
+
     const refreshTask: Task = yield fork(refreshWorker);
+
     const action: PayloadAction = yield take([
       SIGNOUT_REQUEST_TYPE,
       userSliceActions.tokenRefreshRejected.type,
       userSliceActions.signInRejected.type,
     ]);
-    yield cancel(signInTask);
+
     yield cancel(refreshTask);
+
+    let signOutTask: Task | null = null;
     if (action.type === SIGNOUT_REQUEST_TYPE) {
-      yield call([authService, authService.signOut]);
-      yield put(userSliceActions.signOut());
+      signOutTask = yield fork(signOutWorker);
     }
-    /*todo: обновить*/
-    yield call([userLocalStorage, userLocalStorage.remove]);
+
+    let removeUserFromLocalStorageTask: Task | null = null;
+    if (
+      action.type === SIGNOUT_REQUEST_TYPE ||
+      action.type === userSliceActions.tokenRefreshRejected.type
+    ) {
+      removeUserFromLocalStorageTask = yield fork([
+        userLocalStorage,
+        userLocalStorage.remove,
+      ]);
+      yield call(resetToInitialStateWorker);
+    }
+
+    if (signOutTask) {
+      yield join(signOutTask);
+    }
+
+    if (removeUserFromLocalStorageTask) {
+      yield join(removeUserFromLocalStorageTask);
+    }
   }
 }

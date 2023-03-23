@@ -1,10 +1,10 @@
 import cn from 'classnames';
-import { headerShoppingpanel } from '@styles/layout/header.module.scss';
+import { headerShoppingpanel } from '@styles/layout/header/header.module.scss';
 import {
   shoppingpanel,
   shoppingpanelCart,
   shoppingpanelScrolled,
-} from '@styles/components/shoppingpanel.module.scss';
+} from '@styles/layout/header/shoppingpanel.module.scss';
 import {
   button,
   infobutton,
@@ -16,12 +16,12 @@ import {
   infobuttonIcon,
   infobuttonIconCart,
 } from '@styles/components/button.module.scss';
-import { menu, menuItem, menuItemHeader } from '@styles/components/menu.module.scss';
+import { menu, menuItem, menuItemHeader } from '@styles/layout/header/menu.module.scss';
 import { container } from '@styles/layout/container.module.scss';
-import { Link } from 'react-router-dom';
+import { StatefulLink } from '@components/routing/StatefulLink';
 import { pages } from '@utils/pages';
 import { GiShoppingBag as ShoppingBagIcon } from '@react-icons/all-files/gi/GiShoppingBag';
-import { ShoppingPanelProps } from '@interfaces/props/ShoppingPanelProps';
+import { ShoppingPanelProps } from '@interfaces/props/component/ShoppingPanelProps';
 
 const categories: Array<string> = [
   `Компьютеры`,
@@ -43,15 +43,18 @@ const ShoppingPanel = ({ isScrolled }: ShoppingPanelProps) => {
     >
       <nav className={cn(menu, { [container]: isScrolled })}>
         {categories.map((c) => (
-          <Link
+          <StatefulLink
             key={c}
             to={`${pages.catalog.path}/${c}`}
             className={cn(menuItem, menuItemHeader)}
           >
             {c}
-          </Link>
+          </StatefulLink>
         ))}
-        <Link to={pages.cart.path} className={cn(shoppingpanelCart, button, infobutton)}>
+        <StatefulLink
+          to={pages.cart.path}
+          className={cn(shoppingpanelCart, button, infobutton)}
+        >
           <ShoppingBagIcon className={cn(infobuttonIcon, infobuttonIconCart)} />
           <div className={infobuttonBody}>
             <span className={cn(infobuttonTitle, infobuttonTitleCart)}>Корзина</span>
@@ -59,7 +62,7 @@ const ShoppingPanel = ({ isScrolled }: ShoppingPanelProps) => {
               0 позиций
             </span>
           </div>
-        </Link>
+        </StatefulLink>
       </nav>
     </div>
   );

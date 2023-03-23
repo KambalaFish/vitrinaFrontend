@@ -1,8 +1,11 @@
+@use '@styles/abstracts/_mixins.scss' as m;
+
 html {
+  @include m.blockReposition;
+
   scroll-behavior: smooth;
   box-sizing: border-box;
   font-size: calc(0.3125vw + 10px);
-  margin-right: calc(100% - 100vw);
   overflow-x: hidden;
   font-family:
           Montserrat,

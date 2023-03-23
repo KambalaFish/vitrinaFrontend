@@ -1,3 +1,5 @@
-const Contacts = () => <>contacts</>;
+const Contacts = () => {
+  return <>contacts</>;
+};
 
 export { Contacts };

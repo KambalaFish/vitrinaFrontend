@@ -1,7 +1,7 @@
 import { CustomClassNameProp } from '@interfaces/props/common/CustomClassNameProp';
 import { ChildrenProp } from '@interfaces/props/common/ChildrenProp';
 import { CustomHTMLProps } from '@interfaces/other/CustomHTMLProps';
-import { ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, ReactElement } from 'react';
 
 interface DescriptiveButtonProps {
   title: string;
@@ -28,7 +28,7 @@ interface SocialButtonProps
     AerialButtonProps {
   description: string;
   href: string;
-  icon: React.ReactElement;
+  icon: ReactElement;
 }
 
 interface PrimaryButtonProps

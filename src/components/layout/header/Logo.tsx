@@ -1,22 +1,23 @@
 import { pages } from '@utils/pages';
 import cn from 'classnames';
-import { Link } from 'react-router-dom';
+import { StatefulLink } from '@components/routing/StatefulLink';
 import {
   logo,
   logoBody,
   logoText,
   logoEmblem,
-} from '@styles/components/logo.module.scss';
-import { LogoProps } from '@interfaces/props/LogoProps';
-const Logo = ({ to = pages.home.path, className }: LogoProps) => {
+} from '@styles/layout/header/logo.module.scss';
+import { LogoProps } from '@interfaces/props/component/LogoProps';
+
+const Logo = ({ to = pages.home.path, customClassName }: LogoProps) => {
   return (
-    <Link to={to} className={cn(className, logo)}>
+    <StatefulLink to={to} className={cn(customClassName, logo)}>
       <div className={cn(logoBody)}>
         <span className={logoText}>Vitrina</span>
         <span className={logoText}>Kambalina</span>
       </div>
       <span className={logoEmblem}>VK</span>
-    </Link>
+    </StatefulLink>
   );
 };
 
