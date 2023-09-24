@@ -1,6 +1,6 @@
 import type { ServerSideValidationInfoProps } from '@interfaces/props/component/ServerSideValidationInfoProps';
 import cn from 'classnames';
-import { formError } from '@styles/components/form.module.scss';
+import { formError as form__error } from '@styles/components/form.module.scss';
 
 const ServersideError = ({
   customClassName,
@@ -11,7 +11,7 @@ const ServersideError = ({
     return null;
   }
   return (
-    <span className={cn(formError, customClassName)} {...restSpanAttributes}>
+    <span className={cn(form__error, customClassName)} {...restSpanAttributes}>
       {errorMessage}
     </span>
   );

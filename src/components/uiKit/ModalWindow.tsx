@@ -1,16 +1,19 @@
 import {
   modal,
-  modalBody,
-  modalBodyClosable,
-  modalBodyNonClosable,
-  modalContent,
-  modalOpened,
-  modalClosed,
-  modalButton,
-  modalContentPositionTop,
-  modalContentPositionCenter,
+  modalBody as modal__body,
+  modalBodyClosable as modal__body_closable,
+  modalBodyNonClosable as modal__body_nonClosable,
+  modalContent as modal__content,
+  modalOpened as modal_opened,
+  modalClosed as modal_closed,
+  modalButton as modal__button,
+  modalContentPositionTop as modal__content_positionTop,
+  modalContentPositionCenter as modal__content_positionCenter,
 } from '@styles/components/modal.module.scss';
-import { button, buttonRounded } from '@styles/components/button.module.scss';
+import {
+  button,
+  buttonRounded as button_rounded,
+} from '@styles/components/button.module.scss';
 import {
   ModalPosition,
   ModalWindowProps,
@@ -98,27 +101,27 @@ const ModalWindow = ({
 
   return createPortal(
     <div
-      className={cn(modal, { [modalOpened]: isVisible, [modalClosed]: !isVisible })}
+      className={cn(modal, { [modal_opened]: isVisible, [modal_closed]: !isVisible })}
       onKeyDown={handleEscapeKey}
       tabIndex={-1}
       ref={modalContainer}
     >
       <div
-        className={cn(modalBody, {
-          [modalBodyClosable]: pointerEvents,
-          [modalBodyNonClosable]: !pointerEvents,
+        className={cn(modal__body, {
+          [modal__body_closable]: pointerEvents,
+          [modal__body_nonClosable]: !pointerEvents,
         })}
         onClick={onOutOfContentAreaClick}
       >
         <div
-          className={cn(modalContent, {
-            [modalContentPositionTop]: ModalPosition.top === position,
-            [modalContentPositionCenter]: ModalPosition.center === position,
+          className={cn(modal__content, {
+            [modal__content_positionTop]: ModalPosition.top === position,
+            [modal__content_positionCenter]: ModalPosition.center === position,
           })}
         >
           <button
             type={'button'}
-            className={cn(button, buttonRounded, modalButton)}
+            className={cn(button, button_rounded, modal__button)}
             onClick={onClose}
           />
           {children}

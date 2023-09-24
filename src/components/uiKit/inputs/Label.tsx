@@ -1,11 +1,11 @@
 import { LabelProps } from '@interfaces/props/component/LabelProps';
 import cn from 'classnames';
-import { formLabel } from '@styles/components/form.module.scss';
+import { formLabel as form__label } from '@styles/components/form.module.scss';
 
 const Label = ({ htmlFor, customClassName, children, ...restInputProps }: LabelProps) => {
   return (
     <label
-      className={cn(formLabel, customClassName)}
+      className={cn(form__label, customClassName)}
       htmlFor={htmlFor}
       {...restInputProps}
     >

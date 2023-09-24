@@ -1,9 +1,9 @@
 import cn from 'classnames';
 import {
   searchform,
-  searchformInput,
-  searchformSearchbutton,
-  searchformIcon,
+  searchformInput as searchform__input,
+  searchformButton as searchform__button,
+  searchformIcon as searchform__icon,
 } from '@styles/layout/header/searchform.module.scss';
 import { button } from '@styles/components/button.module.scss';
 import { BsSearch as SearchIcon } from '@react-icons/all-files/bs/BsSearch';
@@ -32,10 +32,10 @@ const SearchForm = ({
         type='text'
         name={`query`}
         placeholder={placeholder}
-        className={searchformInput}
+        className={searchform__input}
       />
-      <button type={`submit`} className={cn(button, searchformSearchbutton)}>
-        <SearchIcon className={searchformIcon} />
+      <button type={`submit`} className={cn(button, searchform__button)}>
+        <SearchIcon className={searchform__icon} />
       </button>
     </form>
   );

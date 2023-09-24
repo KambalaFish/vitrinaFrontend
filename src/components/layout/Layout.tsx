@@ -1,6 +1,6 @@
 import { Header } from '@components/layout/header';
 import cn from 'classnames';
-import { page, pageContent } from '@styles/layout/page.module.scss';
+import { page, pageContent as page__content } from '@styles/layout/page.module.scss';
 import { container } from '@styles/layout/container.module.scss';
 import { Outlet } from 'react-router-dom';
 import { Footer } from '@components/layout/footer';
@@ -11,7 +11,7 @@ const Layout = () => {
     <div className={page}>
       <Header />
       <BreadCrumbs />
-      <main className={cn(pageContent, container)}>
+      <main className={cn(page__content, container)}>
         <Outlet />
       </main>
       <Footer />

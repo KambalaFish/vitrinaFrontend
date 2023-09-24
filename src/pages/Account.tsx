@@ -1,16 +1,16 @@
 import {
   account,
-  accountHeader,
-  accountTitle,
+  accountHeader as account__header,
+  accountTitle as account__title,
   signoutbutton,
-  signoutbuttonIcon,
-  signoutbuttonText,
+  signoutbuttonIcon as signoutbutton__icon,
+  signoutbuttonText as signoutbutton__text,
 } from '@styles/pages/account.module.scss';
-import { pageTitle } from '@styles/layout/page.module.scss';
+import { pageTitle as page__title } from '@styles/layout/page.module.scss';
 import {
   button,
-  buttonOutlined,
-  buttonLevitating,
+  buttonOutlined as button_outlined,
+  buttonLevitating as button_levitating,
 } from '@styles/components/button.module.scss';
 import cn from 'classnames';
 import { selectUser } from '@redux/user/user.selectors';
@@ -47,15 +47,15 @@ const Account = () => {
 
   return (
     <div className={account}>
-      <div className={accountHeader}>
-        <h1 className={cn(pageTitle, accountTitle)}>Здравствуйте, {user.name}!</h1>
+      <div className={account__header}>
+        <h1 className={cn(page__title, account__title)}>Здравствуйте, {user.name}!</h1>
         <button
           onClick={onSignOut}
           type={'button'}
-          className={cn(button, buttonOutlined, signoutbutton, buttonLevitating)}
+          className={cn(button, button_outlined, button_levitating, signoutbutton)}
         >
-          <ExitIcon className={signoutbuttonIcon} />
-          <span className={signoutbuttonText}>Выход</span>
+          <ExitIcon className={signoutbutton__icon} />
+          <span className={signoutbutton__text}>Выход</span>
         </button>
       </div>
     </div>

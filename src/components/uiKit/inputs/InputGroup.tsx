@@ -1,5 +1,8 @@
 import { InputGroupProps } from '@interfaces/props/component/InputGroupProps';
-import { inputgroup, inputgroupInput } from '@styles/components/form.module.scss';
+import {
+  inputgroup,
+  inputgroupInput as inputgroup__input,
+} from '@styles/components/form.module.scss';
 import cn from 'classnames';
 import { Input } from '@components/uiKit/inputs/Input';
 import { forwardRef } from 'react';
@@ -15,7 +18,11 @@ const InputGroup = forwardRef<HTMLInputElement, InputGroupProps>(
   ) => {
     return (
       <div className={cn(inputgroup, customClassName)}>
-        <Input ref={ref} customClassName={[inputgroupInput, inputClassNames]} {...rest} />
+        <Input
+          ref={ref}
+          customClassName={[inputgroup__input, inputClassNames]}
+          {...rest}
+        />
         {children}
       </div>
     );

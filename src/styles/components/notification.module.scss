@@ -22,14 +22,14 @@
     transition: transform 0.3s ease-in;
   }
 
-  &Open {
+  &Opened {
     @include k.fadeInRight;
 
     animation: 0.45s fadeInRight linear normal forwards;
     pointer-events: none;
   }
 
-  &Close {
+  &Closed {
     @include k.fadeOutRight;
 
     animation: 0.45s fadeOutRight linear normal forwards;

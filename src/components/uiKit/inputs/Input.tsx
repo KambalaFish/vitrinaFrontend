@@ -1,5 +1,8 @@
 import { InputProps } from '@interfaces/props/component/InputProps';
-import { formInput, formInputInvalid } from '@styles/components/form.module.scss';
+import {
+  formInput as form__input,
+  formInputInvalid as form__input_invalid,
+} from '@styles/components/form.module.scss';
 import cn from 'classnames';
 import { forwardRef } from 'react';
 
@@ -17,7 +20,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
   ) => {
     return (
       <input
-        className={cn(formInput, { [formInputInvalid]: !!errorMessage }, customClassName)}
+        className={cn(
+          form__input,
+          { [form__input_invalid]: !!errorMessage },
+          customClassName
+        )}
         id={id}
         type={type}
         autoComplete={autoComplete}

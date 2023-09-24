@@ -1,5 +1,9 @@
-import { authLabel, authInput, authValidationinfo } from '@styles/pages/auth.module.scss';
-import { inputgroupIcon } from '@styles/components/form.module.scss';
+import {
+  authLabel as auth__label,
+  authInput as auth__input,
+  authValidationinfo as auth__validationInfo,
+} from '@styles/pages/auth.module.scss';
+import { inputgroupIcon as inputgroup__icon } from '@styles/components/form.module.scss';
 import { Label } from '@components/uiKit/inputs/Label';
 import { InputGroup } from '@components/uiKit/inputs/InputGroup';
 import { ValidationInfo } from '@components/uiKit/inputs/ValidationInfo';
@@ -22,22 +26,22 @@ const PasswordGroup = forwardRef<HTMLInputElement, PasswordGroupProps>(
     ref
   ) => {
     const passIcon = isPassVisible ? (
-      <div className={inputgroupIcon}>
+      <div className={inputgroup__icon}>
         <LockOpened onClick={() => setPassVisibility(false)} />
       </div>
     ) : (
-      <div className={inputgroupIcon}>
+      <div className={inputgroup__icon}>
         <LockClosed onClick={() => setPassVisibility(true)} />
       </div>
     );
     return (
       <FormGroup>
-        <Label customClassName={authLabel} htmlFor={id}>
+        <Label customClassName={auth__label} htmlFor={id}>
           {label}
         </Label>
         <InputGroup
           inputProps={{
-            customClassName: [authInput],
+            customClassName: [auth__input],
             id,
             type: isPassVisible ? 'text' : 'password',
             placeholder: 'qwErty12345',
@@ -49,7 +53,7 @@ const PasswordGroup = forwardRef<HTMLInputElement, PasswordGroupProps>(
           {passIcon}
         </InputGroup>
         <ValidationInfo
-          customClassName={authValidationinfo}
+          customClassName={auth__validationInfo}
           htmlFor={id}
           errorMessage={errorMessage}
         />

@@ -1,8 +1,8 @@
 import { PrimaryButtonProps } from '@interfaces/props/component/ButtonProps';
 import {
   button,
-  buttonRoundedS,
-  buttonPrimary,
+  buttonRoundedS as button_roundedS,
+  buttonPrimary as button_primary,
 } from '@styles/components/button.module.scss';
 import cn from 'classnames';
 const PrimaryButton = ({
@@ -15,7 +15,7 @@ const PrimaryButton = ({
   return (
     <button
       type={type}
-      className={cn(button, buttonRoundedS, buttonPrimary, customClassName)}
+      className={cn(button, button_roundedS, button_primary, customClassName)}
       onClick={onClick}
       {...buttonHTMLProps}
     >

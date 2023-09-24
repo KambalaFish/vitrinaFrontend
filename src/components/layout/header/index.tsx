@@ -1,11 +1,11 @@
 import cn from 'classnames';
-import { pageHeader } from '@styles/layout/page.module.scss';
+import { pageHeader as page__header } from '@styles/layout/page.module.scss';
 import {
   header,
-  headerContainer,
-  headerLogo,
-  headerSearch,
-  headerTelegram,
+  headerContainer as header__container,
+  headerLogo as header__logo,
+  headerSearch as header__search,
+  headerTelegram as header__telegram,
 } from '@styles/layout/header/header.module.scss';
 import { container } from '@styles/layout/container.module.scss';
 import { Logo } from '@components/layout/header/Logo';
@@ -14,7 +14,7 @@ import { SearchForm } from '@components/layout/header/SearchForm';
 import { pages } from '@utils/pages';
 import { SocialButton } from '@components/uiKit/buttons/SocialButton';
 import TelegramIcon from '@assets/tgicon.svg';
-import { infobuttonIcon } from '@styles/components/button.module.scss';
+import { infobuttonIcon as infobutton__icon } from '@styles/components/button.module.scss';
 import { ShoppingPanel } from '@components/layout/header/ShoppingPanel';
 import { useState, useRef, useEffect } from 'react';
 import { throttle } from '@utils/throttle';
@@ -41,17 +41,17 @@ const Header = () => {
   }, []);
 
   return (
-    <header className={cn(pageHeader, header)} ref={headerRef}>
-      <div className={cn(container, headerContainer)}>
-        <Logo customClassName={headerLogo} />
+    <header className={cn(page__header, header)} ref={headerRef}>
+      <div className={cn(container, header__container)}>
+        <Logo customClassName={header__logo} />
         <InfoPanel />
-        <SearchForm action={pages.catalog.path} customClassName={headerSearch} />
+        <SearchForm action={pages.catalog.path} customClassName={header__search} />
         <SocialButton
-          customClassName={headerTelegram}
+          customClassName={header__telegram}
           title={'Наш телеграм'}
           description={`@dmitrykambalin`}
           href={`https://telegram.me/dmitrykambalin`}
-          icon={<TelegramIcon className={infobuttonIcon} />}
+          icon={<TelegramIcon className={infobutton__icon} />}
         />
         <ShoppingPanel isScrolled={isScrolled} />
       </div>

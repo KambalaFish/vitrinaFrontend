@@ -5,11 +5,11 @@ import { HiOutlineExclamationCircle as ExclamationCircle } from '@react-icons/al
 import { FiCheckCircle as CheckMark } from '@react-icons/all-files/fi/FiCheckCircle';
 import { HiOutlineExclamation as ExclamationTriangle } from '@react-icons/all-files/hi/HiOutlineExclamation';
 import {
-  notificationHeader,
-  notificationIcon,
-  notificationIconError,
-  notificationType,
-  notificationTypeError,
+  notificationHeader as notification__header,
+  notificationIcon as notification__icon,
+  notificationIconError as notification__icon_error,
+  notificationType as notification__type,
+  notificationTypeError as notification__type_error,
 } from '@styles/components/notification.module.scss';
 
 const NotificationHeader = ({ type }: Pick<INotification, 'type'>) => {
@@ -20,27 +20,27 @@ const NotificationHeader = ({ type }: Pick<INotification, 'type'>) => {
     case NotificationType.info: {
       content = 'Инфо';
       classNames = [];
-      icon = <ExclamationCircle className={cn(notificationIcon)} />;
+      icon = <ExclamationCircle className={cn(notification__icon)} />;
       break;
     }
     case NotificationType.error: {
       content = 'Ошибка';
-      classNames = [notificationTypeError];
+      classNames = [notification__type_error];
       icon = (
-        <ExclamationCircle className={cn(notificationIcon, notificationIconError)} />
+        <ExclamationCircle className={cn(notification__icon, notification__icon_error)} />
       );
       break;
     }
     case NotificationType.success: {
       content = 'Успешно';
       classNames = [];
-      icon = <CheckMark className={cn(notificationIcon)} />;
+      icon = <CheckMark className={cn(notification__icon)} />;
       break;
     }
     case NotificationType.warning: {
       content = 'Предупреждение';
       classNames = [];
-      icon = <ExclamationTriangle className={cn(notificationIcon)} />;
+      icon = <ExclamationTriangle className={cn(notification__icon)} />;
       break;
     }
     default: {
@@ -50,9 +50,9 @@ const NotificationHeader = ({ type }: Pick<INotification, 'type'>) => {
     }
   }
   return (
-    <div className={cn(notificationHeader)}>
+    <div className={cn(notification__header)}>
       {icon}
-      <p className={cn(notificationType, classNames)}>{content}</p>
+      <p className={cn(notification__type, classNames)}>{content}</p>
     </div>
   );
 };

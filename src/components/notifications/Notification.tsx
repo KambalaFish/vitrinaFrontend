@@ -1,16 +1,16 @@
 import { NotificationType } from '@utils/notifications/NotificationType';
 import {
-  notification as notificationCN,
-  notificationButton,
-  notificationButtonError,
-  notificationError,
-  notificationInfo,
-  notificationMessage,
-  notificationMessageError,
-  notificationSuccess,
-  notificationWarning,
-  notificationOpen,
-  notificationClose,
+  notification,
+  notificationButton as notification__button,
+  notificationButtonError as notification__button_error,
+  notificationError as notification_error,
+  notificationInfo as notification_info,
+  notificationMessage as notification__message,
+  notificationMessageError as notification__message_error,
+  notificationSuccess as notification_success,
+  notificationWarning as notification_warning,
+  notificationOpened as notification_opened,
+  notificationClosed as notification_closed,
 } from '@styles/components/notification.module.scss';
 import cn from 'classnames';
 import { button } from '@styles/components/button.module.scss';
@@ -23,12 +23,12 @@ import { NotificationProps } from '@interfaces/props/component/NotificationProps
 
 export const NOTIFICATION_TRANSITION_MS = 450;
 
-const Notification = ({ notification }: NotificationProps) => {
+const Notification = ({ notification: notificationData }: NotificationProps) => {
   const notificationsDispatch = useContext<INotificationContext>(NotificationContext);
   const [isNotificationClosed, setIsNotificationClosed] = useState(false);
   const [wasShown, setWasShown] = useState(false);
 
-  const { type, message, unmountTimeoutMs } = notification;
+  const { type, message, unmountTimeoutMs } = notificationData;
 
   useEffect(() => {
     if (!wasShown) {
@@ -46,7 +46,7 @@ const Notification = ({ notification }: NotificationProps) => {
           setIsNotificationClosed(true);
         }, unmountTimeoutMs);
         setTimeout(() => {
-          notificationsDispatch(removeNotification(notification));
+          notificationsDispatch(removeNotification(notificationData));
         }, unmountTimeoutMs + NOTIFICATION_TRANSITION_MS);
       }
     }
@@ -56,32 +56,32 @@ const Notification = ({ notification }: NotificationProps) => {
   const onNotificationClose = () => {
     setIsNotificationClosed(true);
     setTimeout(() => {
-      notificationsDispatch(removeNotification(notification));
+      notificationsDispatch(removeNotification(notificationData));
     }, NOTIFICATION_TRANSITION_MS);
   };
 
   return (
     <div
-      className={cn(notificationCN, {
-        [notificationError]: type === NotificationType.error,
-        [notificationSuccess]: type === NotificationType.success,
-        [notificationInfo]: type === NotificationType.info,
-        [notificationWarning]: type === NotificationType.warning,
-        [notificationOpen]: !wasShown,
-        [notificationClose]: isNotificationClosed,
+      className={cn(notification, {
+        [notification_error]: type === NotificationType.error,
+        [notification_success]: type === NotificationType.success,
+        [notification_info]: type === NotificationType.info,
+        [notification_warning]: type === NotificationType.warning,
+        [notification_opened]: !wasShown,
+        [notification_closed]: isNotificationClosed,
       })}
     >
       <button
         type={'button'}
-        className={cn(button, notificationButton, {
-          [notificationButtonError]: type === NotificationType.error,
+        className={cn(button, notification__button, {
+          [notification__button_error]: type === NotificationType.error,
         })}
         onClick={onNotificationClose}
       ></button>
       <NotificationHeader type={type} />
       <p
-        className={cn(notificationMessage, {
-          [notificationMessageError]: type === NotificationType.error,
+        className={cn(notification__message, {
+          [notification__message_error]: type === NotificationType.error,
         })}
       >
         {message}

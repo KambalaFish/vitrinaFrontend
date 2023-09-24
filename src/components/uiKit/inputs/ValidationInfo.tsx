@@ -1,6 +1,6 @@
 import { ValidationInfoProps } from '@interfaces/props/component/ValidationInfoProps';
 import cn from 'classnames';
-import { formValidationinfo } from '@styles/components/form.module.scss';
+import { formValidationinfo as form__validationInfo } from '@styles/components/form.module.scss';
 
 const ValidationInfo = ({
   htmlFor,
@@ -14,7 +14,7 @@ const ValidationInfo = ({
 
   return (
     <label
-      className={cn(formValidationinfo, customClassName)}
+      className={cn(form__validationInfo, customClassName)}
       htmlFor={htmlFor}
       {...restInputProps}
     >

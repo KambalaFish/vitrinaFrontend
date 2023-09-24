@@ -1,13 +1,13 @@
 import {
   auth,
-  authTitle,
-  authLabel,
-  authInput,
-  authButton,
-  authValidationinfo,
-  authError,
+  authTitle as auth__title,
+  authLabel as auth__label,
+  authInput as auth__input,
+  authButton as auth__button,
+  authValidationinfo as auth__validationInfo,
+  authError as auth__error,
 } from '@styles/pages/auth.module.scss';
-import { formAuth } from '@styles/components/form.module.scss';
+import { formAuth as form_auth } from '@styles/components/form.module.scss';
 import { PrimaryButton } from '@components/uiKit/buttons/PrimaryButton';
 import { Form } from '@components/uiKit/inputs/Form';
 import { FormGroup } from '@components/uiKit/inputs/FormGroup';
@@ -22,8 +22,8 @@ import cn from 'classnames';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import { SignUpInput, signUpSchema } from '@validations/auth.schemas';
 import {
-  buttonDisabled,
-  buttonPrimaryDisabled,
+  buttonAwaiting as button_awaiting,
+  buttonDisabledGray as button_disabledGray,
 } from '@styles/components/button.module.scss';
 import { ServersideError } from '@components/uiKit/inputs/ServersideError';
 import { authService } from '@services/auth.service';
@@ -90,25 +90,25 @@ const SignUp = () => {
 
   return (
     <div className={cn(auth)}>
-      <h1 className={authTitle}>Регистрация</h1>
+      <h1 className={auth__title}>Регистрация</h1>
       <Form
-        customClassName={[formAuth /*, { [formClosed]: signedUpSuccessfully }*/]}
+        customClassName={[form_auth /*, { [formClosed]: signedUpSuccessfully }*/]}
         name={'signUp'}
         onSubmit={handleSubmit(signUpHandler)}
       >
         <FormGroup>
-          <Label customClassName={authLabel} htmlFor={'name'}>
+          <Label customClassName={auth__label} htmlFor={'name'}>
             Имя
           </Label>
           <Input
-            customClassName={[authInput]}
+            customClassName={[auth__input]}
             id={'name'}
             {...register('name')}
             placeholder={'Иван'}
             errorMessage={errors.name?.message}
           />
           <ValidationInfo
-            customClassName={authValidationinfo}
+            customClassName={auth__validationInfo}
             htmlFor={'name'}
             errorMessage={errors.name?.message}
           />
@@ -134,13 +134,16 @@ const SignUp = () => {
           errorMessage={errors.passwordConfirmation?.message}
           {...register('passwordConfirmation')}
         />
-        <ServersideError customClassName={authError} errorMessage={signUpErrorMessage} />
+        <ServersideError
+          customClassName={auth__error}
+          errorMessage={signUpErrorMessage}
+        />
         <PrimaryButton
           type={'submit'}
           disabled={isSigningUp}
           customClassName={[
-            authButton,
-            { [buttonDisabled]: isSigningUp, [buttonPrimaryDisabled]: isSigningUp },
+            auth__button,
+            { [button_awaiting]: isSigningUp, [button_disabledGray]: isSigningUp },
           ]}
         >
           зарегистрироваться

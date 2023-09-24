@@ -1,13 +1,13 @@
 import {
   auth,
-  authButton,
-  authError,
-  authText,
-  authTextHighlighted,
-  authTextSmall,
-  authTitle,
+  authButton as auth__button,
+  authError as auth__error,
+  authText as auth__text,
+  authTextHighlighted as auth__text_highlighted,
+  authTextSmall as auth__text_small,
+  authTitle as auth__title,
 } from '@styles/pages/auth.module.scss';
-import { formAuth } from '@styles/components/form.module.scss';
+import { formAuth as form_auth } from '@styles/components/form.module.scss';
 import { Form } from '@components/uiKit/inputs/Form';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { SignInInput, signInSchema } from '@validations/auth.schemas';
@@ -26,8 +26,8 @@ import {
   selectUserRequestStatus,
 } from '@redux/user/user.selectors';
 import {
-  buttonDisabled,
-  buttonPrimaryDisabled,
+  buttonAwaiting as button_awaiting,
+  buttonDisabledGray as button_disabledGray,
 } from '@styles/components/button.module.scss';
 import { RequestStatus } from '@interfaces/redux/other/requestStatus';
 import { ServersideError } from '@components/uiKit/inputs/ServersideError';
@@ -86,9 +86,9 @@ const SignIn = () => {
 
   return (
     <div className={auth}>
-      <div className={authTitle}>Вход</div>
+      <div className={auth__title}>Вход</div>
       <Form
-        customClassName={formAuth}
+        customClassName={form_auth}
         name={'signIn'}
         onSubmit={handleSubmit(signInHandler)}
       >
@@ -102,26 +102,26 @@ const SignIn = () => {
           {...register('password')}
         />
         {userRequestStatus === RequestStatus.failed && (
-          <ServersideError customClassName={authError} errorMessage={errorMessage} />
+          <ServersideError customClassName={auth__error} errorMessage={errorMessage} />
         )}
         <PrimaryButton
           type={'submit'}
           disabled={userRequestStatus === RequestStatus.pending}
           customClassName={[
-            authButton,
+            auth__button,
             {
-              [buttonDisabled]: userRequestStatus === RequestStatus.pending,
-              [buttonPrimaryDisabled]: userRequestStatus === RequestStatus.pending,
+              [button_awaiting]: userRequestStatus === RequestStatus.pending,
+              [button_disabledGray]: userRequestStatus === RequestStatus.pending,
             },
           ]}
         >
           войти
         </PrimaryButton>
       </Form>
-      <p className={cn(authText, authTextSmall)}>
+      <p className={cn(auth__text, auth__text_small)}>
         У меня нет аккаунта -{' '}
         <Link to={'/sign-up'} state={state}>
-          <span className={authTextHighlighted}>зарегистрироваться</span>
+          <span className={auth__text_highlighted}>зарегистрироваться</span>
         </Link>
         .
       </p>
