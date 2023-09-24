@@ -9,8 +9,7 @@
                   #2f3c7e 65%,
                   #101820ff 90%
   );
-  // height: f.ptr(220px);
-  height: f.ptr(2 * map.get(v.$header, rowgap)) + map.get(v.$header, infopanel) + map.get(v.$header, search) + map.get(v.$header, shoppingpanel);
+  height: v.$headerHeight;
 
   &Container {
     margin: 0 auto;
@@ -18,7 +17,7 @@
     align-items: flex-start;
     align-content: space-between;
     grid: {
-      row-gap: f.ptr(map.get(v.$header, rowgap));
+      row-gap: map.get(v.$header, rowgap);
       column-gap: f.ptr(20px);
       template: {
         columns: 1fr 1fr 1fr f.ptr(230px);

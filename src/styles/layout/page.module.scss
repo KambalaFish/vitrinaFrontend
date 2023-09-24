@@ -1,6 +1,7 @@
 @use "@styles/abstracts/_variables.scss" as v;
 @use "@styles/abstracts/_functions.scss" as f;
 @use "@styles/abstracts/_mixins.scss" as m;
+@use "@styles/abstracts/_keyframes.scss" as k;
 
 .page {
   @include m.flexColumn;
@@ -18,10 +19,20 @@
   &Breadcrumbs {
     margin: 0 auto;
     width: 100%;
+
+    &Hidden {
+      display: none;
+    }
+
+    &Shown {
+      @include k.fadeIn;
+
+      animation: 0.3s fadeIn linear normal forwards;
+    }
   }
 
   &Content {
-    height: 120vh;
+    min-height: calc(100vh - #{v.$headerHeight} - 1.2rem);
     width: 100%;
     margin: 0 auto;
   }

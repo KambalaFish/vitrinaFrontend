@@ -1,6 +1,7 @@
 @use "@styles/abstracts/_mixins.scss" as m;
 @use "@styles/abstracts/_variables.scss" as v;
 @use "@styles/abstracts/_functions.scss" as f;
+@use "sass:map";
 
 .logo {
   @include m.flex(space-between);
@@ -18,7 +19,7 @@
   color: v.$pBlack;
   font-weight: bold;
   column-gap: f.ptr(8px);
-  padding: f.ptr(6px) f.ptr(12px);
+  padding: map.get(v.$header, logoverticalgap) f.ptr(12px);
   border-radius: f.ptr(16px);
   width: max-content;
   height: max-content;

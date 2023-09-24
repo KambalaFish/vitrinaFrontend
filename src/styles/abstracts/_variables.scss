@@ -1,4 +1,5 @@
 @use "functions" as f;
+@use "sass:map";
 
 $text: rgb(16 16 16);
 $breakpoints: (
@@ -46,9 +47,12 @@ $sBrown2: rgb(70 35 48);
 $sBrown3: rgb(60 25 38);
 $sBrown4: rgb(50 15 28);
 $header: (
-  rowgap: 32px,
+  rowgap: f.ptr(32px),
+  logoverticalgap: f.ptr(6px),
   infopanel: f.ptr(48px),
   search: f.ptr(56px),
   shoppingpanel: f.ptr(64px)
 );
-$headerHeight: f.ptr(200px);
+$headerHeight: calc(2 * #{map.get($header, rowgap)} + #{map.get($header, infopanel)} + #{map.get($header, search)} + #{map.get($header, shoppingpanel)} + 2 * #{map.get($header, logoverticalgap)});
+$trIn: all 0.25s ease-out;
+$trOut: all 0.35s ease-in;
