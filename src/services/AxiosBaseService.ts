@@ -1,10 +1,16 @@
-import type { AxiosResponse, AxiosError } from 'axios';
+import type { AxiosResponse, AxiosError, AxiosInstance } from 'axios';
 import type { SuccessfulResponse } from '@interfaces/services/responses/SuccessfulResponse';
 import type { ApiResponse } from '@interfaces/services/ApiResponse';
 import type { ErrorBody } from '@interfaces/services/ErrorBody';
 import { ErrorResponse } from '@interfaces/services/responses/ErrorResponse';
 import { StatusCodes } from '@utils/statusCodes';
 export class AxiosBaseService {
+  protected readonly apiInstance: AxiosInstance;
+
+  constructor(apiInstance: AxiosInstance) {
+    this.apiInstance = apiInstance;
+  }
+
   protected successHandler<T>(
     response: AxiosResponse<SuccessfulResponse<T>>
   ): ApiResponse<T> {

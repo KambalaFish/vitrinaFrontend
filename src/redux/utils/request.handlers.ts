@@ -8,7 +8,7 @@ const requestPending = <S extends RequestState>(state: S) => {
   state.requestStatus = RequestStatus.pending;
 };
 const requestRejected =
-  <S extends RequestState>(cb: null | ((state: S) => void)) =>
+  <S extends RequestState>(cb?: (state: S) => void) =>
   (state: S, { payload }: PayloadAction<RejectionPayload>) => {
     state.requestStatus = RequestStatus.failed;
     state.requestError = payload;

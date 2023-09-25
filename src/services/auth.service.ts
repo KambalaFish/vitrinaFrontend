@@ -9,12 +9,10 @@ import { ServiceResult } from '@interfaces/services/ServiceResult';
 import { SignUpData } from '@interfaces/services/requests/SignUpData';
 
 class AuthService extends AxiosBaseService implements IAuthService {
-  protected readonly apiInstance: AxiosInstance;
   protected readonly resource: string;
 
   constructor(axiosInstance: AxiosInstance, resource = 'users') {
-    super();
-    this.apiInstance = axiosInstance;
+    super(axiosInstance);
     this.resource = resource;
   }
 
