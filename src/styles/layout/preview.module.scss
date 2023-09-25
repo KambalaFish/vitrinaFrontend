@@ -1,0 +1,8 @@
+@use '@styles/abstracts/_mixins.scss' as m;
+
+.preview {
+  @include m.rectangle(100%, 100vh);
+  @include m.flexColumn(center);
+
+  background-image: radial-gradient(circle at 50% 50%, rgb(3 65 117 / 100%) 32%, rgb(8 0 56 / 100%) 80%);
+}
