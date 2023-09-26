@@ -1,0 +1,23 @@
+@use "@styles/abstracts/_mixins.scss" as m;
+@use "@styles/abstracts/_functions.scss" as f;
+@use "@styles/abstracts/_variables.scss" as v;
+
+.arrow {
+  $arrowSize: f.ptr(16px);
+  $arrowLineWidth: f.ptr(3px);
+
+  @include m.rectangle($arrowSize, $arrowSize);
+
+  border-top: $arrowLineWidth solid v.$sBlack;
+  border-right: $arrowLineWidth solid v.$sBlack;
+
+  &Gray {
+    border-top-color: v.$sBlack6;
+    border-right-color: v.$sBlack6;
+  }
+
+  &White {
+    border-top-color: v.$sWhite3;
+    border-right-color: v.$sWhite3;
+  }
+}

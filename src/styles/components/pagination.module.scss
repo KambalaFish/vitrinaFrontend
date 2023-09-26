@@ -1,0 +1,132 @@
+@use "@styles/abstracts/_mixins.scss" as m;
+@use "@styles/abstracts/_functions.scss" as f;
+@use "@styles/abstracts/_variables.scss" as v;
+
+$paginationFS: f.ptr(16px);
+$paginationHeight: calc(#{f.ptr(28px)} + #{$paginationFS});
+$paginationItemSize: calc(#{f.ptr(28px)} + #{$paginationFS});
+$paginationSwitchSize: calc($paginationItemSize * 1.25);
+$activeItemBorderWidth: 1px;
+$hoverColor: rgb(236 231 234);
+
+.pagination {
+  @include m.flex($jc: center);
+  @include m.solidBorder(v.$sBlack8, $activeItemBorderWidth);
+
+  position: relative;
+  border-radius: 0.5rem;
+
+
+  &Switch {
+    @include m.rectangle($paginationSwitchSize, $paginationHeight);
+
+    background-color: transparent;
+    position: relative;
+    transition: background-color 0.2s ease-in;
+
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: 0;
+      top: 15%;
+      bottom: 15%;
+      width: calc(#{$activeItemBorderWidth} / 2);
+      background-color: v.$sBlack8;
+    }
+
+    &Left {
+      border-top-left-radius: 0.4rem;
+      border-bottom-left-radius: 0.4rem;
+
+      &::after {
+        right: 0;
+      }
+    }
+
+    &Right {
+      border-top-right-radius: 0.4rem;
+      border-bottom-right-radius: 0.4rem;
+
+      &::after {
+        left: 0;
+      }
+    }
+
+    &Hovered {
+      &:hover {
+        background-color: $hoverColor;
+        transition: background-color 0.2s ease-out;
+      }
+    }
+
+    &Disabled {
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &Arrow {
+    position: absolute;
+    top: 50%;
+
+    &Left {
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%) rotate(225deg);
+    }
+
+    &Right {
+      right: 50%;
+      transform: translateX(25%) translateY(-50%) rotate(45deg);
+    }
+  }
+
+  &List {
+    @include m.flex;
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &Item {
+    @include m.flex(center, center);
+
+    font-size: $paginationFS;
+    line-height: 1;
+    width: $paginationItemSize;
+    aspect-ratio: 1 / 1;
+    transition: background-color 0.2s ease-in;
+
+    &IsActive {
+      position: relative;
+      font-weight: 700;
+
+      &::after {
+        @include m.solidBorder(v.$sBlack4, $activeItemBorderWidth);
+
+        content: "";
+        position: absolute;
+        top: -$activeItemBorderWidth;
+        left: -$activeItemBorderWidth;
+        bottom: -$activeItemBorderWidth;
+        right: -$activeItemBorderWidth;
+        z-index: 1;
+      }
+    }
+
+    &Breakpoint {
+      padding-bottom: f.ptr(8px);
+
+      &:hover {
+        cursor: default;
+      }
+    }
+
+    &:hover:not(.paginationItemIsActive, .paginationItemBreakpoint) {
+      background-color: $hoverColor;
+      transition: background-color 0.2s ease-out;
+    }
+  }
+
+}
