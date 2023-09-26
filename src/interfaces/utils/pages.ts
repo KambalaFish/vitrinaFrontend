@@ -6,22 +6,28 @@ type PageNames =
   | 'personalAccount'
   | 'contacts'
   | 'catalog'
-  | 'category'
+  | 'catalogLevel1'
+  | 'catalogLevel2'
+  | 'catalogLevel3'
   | 'cart'
   | 'signIn'
-  | 'signUp';
+  | 'signUp'
+  | 'product';
 
 interface PageHandle {
   crumb: (
     position: string,
     isLast: boolean,
-    params?: Record<string, string>
+    params?: Record<string, string>,
+    data?: any
   ) => ReactElement;
 }
 
 interface PageInfo {
   path: string;
   handle?: PageHandle;
+  dynamicPath?: (...args: string[]) => string;
+  loader?: (...args: any) => (obj: any) => Promise<string | null>;
 }
 
 type Pages = {

@@ -1,7 +1,6 @@
 @use "@styles/abstracts/_mixins.scss" as m;
 @use "@styles/abstracts/_functions.scss" as f;
 @use "@styles/abstracts/_variables.scss" as v;
-@use "@styles/abstracts/_keyframes.scss" as k;
 
 .breadcrumbs {
   @include m.flex;
@@ -21,16 +20,6 @@
     right: 0;
     height: 1px;
     background-color: v.$sWhite2;
-  }
-
-  &Shown {
-    @include k.fadeIn;
-
-    animation: 0.3s fadeIn linear normal forwards;
-  }
-
-  &Hidden {
-    display: none;
   }
 }
 
