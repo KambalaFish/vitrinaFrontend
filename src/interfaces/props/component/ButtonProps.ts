@@ -2,6 +2,7 @@ import { CustomClassNameProp } from '@interfaces/props/common/CustomClassNamePro
 import { ChildrenProp } from '@interfaces/props/common/ChildrenProp';
 import { CustomHTMLProps } from '@interfaces/other/CustomHTMLProps';
 import { ButtonHTMLAttributes, ReactElement } from 'react';
+import { ArgumentArray } from 'classnames';
 
 interface DescriptiveButtonProps {
   title: string;
@@ -36,10 +37,22 @@ interface PrimaryButtonProps
     CustomClassNameProp,
     Required<ChildrenProp> {}
 
+interface SecondaryButtonProps
+  extends ButtonHTMLProps,
+    CustomClassNameProp,
+    Required<ChildrenProp> {}
+
+interface PurchaseButtonProps {
+  buttonCustomClassName?: ArgumentArray;
+  iconCustomClassName?: ArgumentArray;
+}
+
 export type {
   DescriptiveButtonProps,
   RoundedButtonProps,
   AerialButtonProps,
   SocialButtonProps,
   PrimaryButtonProps,
+  SecondaryButtonProps,
+  PurchaseButtonProps,
 };

@@ -1,0 +1,20 @@
+.image {
+  max-width: 100%;
+  height: auto;
+
+  &Squared {
+    aspect-ratio: 1 / 1;
+  }
+
+  &ObjectfitContain {
+    object-fit: contain;
+  }
+
+  &ObjectfitCover {
+    object-fit: cover;
+  }
+
+  &ObjectpositionCenter {
+    object-position: center;
+  }
+}

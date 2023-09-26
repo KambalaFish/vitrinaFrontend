@@ -1,0 +1,11 @@
+@use '@styles/abstracts/_variables.scss' as v;
+
+.link {
+  cursor: pointer;
+  transition: v.$trOut;
+
+  &:hover {
+    color: v.$sBlue4;
+    transition: v.$trIn;
+  }
+}
